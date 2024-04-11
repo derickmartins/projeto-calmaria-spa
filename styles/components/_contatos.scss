@@ -1,0 +1,96 @@
+@use '../abstract/variaveis';
+@use '../abstract/mixins';
+
+#contatos {
+    @include mixins.margem-central (83.334%);
+    display: flex;
+    gap: 1.75rem;
+    justify-content: space-between;
+
+    .contatos-imgs {
+        max-width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: space-around;
+
+        img {
+            width: 100%;
+
+            &:nth-child(n + 2){
+                width: 47.5%;
+                margin-bottom: 1.25rem;
+            }
+        }
+    }
+
+    .contatos-form {
+        max-width: 50%;
+        background: variaveis.$gradiente-primario;
+        padding: 2rem 3rem;
+        border-radius: 48px;
+
+        .titulo {
+            @include mixins.ff-fs-fc-lh (variaveis.$ft-titulo, 2rem, variaveis.$cor-secundaria, 2.375rem);
+        }
+
+        .infos {
+            @include mixins.ff-fs-fc-lh (variaveis.$ft-texto, 1.375rem, variaveis.$cor-primaria, 2rem);
+            padding: 1.5rem 0;
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+            align-self: stretch;
+
+            .form-group {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                label {
+                    @include mixins.ff-fs-fc-lh (variaveis.$ft-texto, 1.125rem, variaveis.$cor-primaria, 1.75rem);
+                    font-weight: 600;
+                }
+
+                input {
+                    border: none;
+                    border-radius: 32px;
+                    padding: 1rem;
+
+                    &::placeholder {
+                        @include mixins.ff-fs-fc-lh (variaveis.$ft-texto, 1rem, #5D586C, 1.375rem);
+                        font-weight: 400;
+                    }
+                }
+
+                textarea {
+                    @extend input;
+                    display: block;
+                    height: 120px;
+                }
+            }
+
+            .btn {
+                width: 100%;
+                border: none;
+                border-radius: 40px;
+                background-color: variaveis.$cor-secundaria;
+                padding: 1.5rem;
+                @include mixins.ff-fs-fc-lh (variaveis.$ft-texto, 1.375rem, #FFFFFF, 1rem);
+                font-weight: 600;
+                margin-top: 0.5rem;
+                transition: .3s;
+
+                &:hover {
+                    background-color: variaveis.$cor-terciaria;
+                }
+            }
+        }
+    }
+
+}
